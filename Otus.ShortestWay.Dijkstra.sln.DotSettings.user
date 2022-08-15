@@ -1,7 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d46069f6_002D2ead_002D4f76_002D9cae_002D38dd89fc7094/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Can_Find_Way_Via_Dijkstra" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=aaa3b177_002D17b9_002D4ef6_002Db830_002D4e0f9b10ea71/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::0A3E180D-EA56-4954-82E0-BF9DFED15088::.NETCoreApp,Version=v3.1::Tests.Tests.Can_Find_Way_Via_Dijkstra_Example_From_Wiki&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::0A3E180D-EA56-4954-82E0-BF9DFED15088::.NETCoreApp,Version=v3.1::Tests.Tests.Can_Find_Way_Via_Dijkstra_Example_From_Lesson&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::0A3E180D-EA56-4954-82E0-BF9DFED15088::.NETCoreApp,Version=v3.1::Tests.Tests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -8,37 +8,34 @@ namespace Otus.ShortestWay.Dijkstra.Logic
     {
         public Edge[] Run(int[,] adjacencyMatrix)
         {
-            var distances = InitDistances(adjacencyMatrix);
-
             var fullyProcessedVertexes = new List<int>();
+
+            var distances = InitDistances(adjacencyMatrix);
 
             for (var j = 0; j < adjacencyMatrix.GetLength(1); j++)
             {
-                var vertexWithMinWeight = GetVertexWithMinWeight(distances, fullyProcessedVertexes);
-                var weightForVertexFrom = distances.First(x => x.To == vertexWithMinWeight);
+                var edgeWithMinWeight = GetEdgeWithMinWeight(distances, fullyProcessedVertexes);
 
-                var adjacencyVertexes = GetAdjacencyVertexes(adjacencyMatrix, vertexWithMinWeight);
+                var adjacencyVertexes = GetAdjacencyVertexes(adjacencyMatrix, edgeWithMinWeight.To);
 
-                for (var i = 0; i < adjacencyVertexes.Length; i++)
+                foreach (var vertexTo in adjacencyVertexes)
                 {
-                    var vertexTo = adjacencyVertexes[i];
-
                     if (fullyProcessedVertexes.Contains(vertexTo))
                         continue;
 
-                    var weight = adjacencyMatrix[vertexWithMinWeight, vertexTo];
-                    var possibleNewWeight = weightForVertexFrom.Weight + weight;
+                    var weightForVertexTo = adjacencyMatrix[edgeWithMinWeight.To, vertexTo];
+                    var possibleNewWeight = edgeWithMinWeight.Weight + weightForVertexTo;
 
                     var existedWay = distances.First(x => x.To == vertexTo);
 
                     if (possibleNewWeight < existedWay.Weight)
                     {
-                        existedWay.From = vertexWithMinWeight;
+                        existedWay.From = edgeWithMinWeight.To;
                         existedWay.Weight = possibleNewWeight;
                     }
                 }
 
-                fullyProcessedVertexes.Add(vertexWithMinWeight);
+                fullyProcessedVertexes.Add(edgeWithMinWeight.To);
             }
 
             return distances.ToArray();
@@ -61,9 +58,20 @@ namespace Otus.ShortestWay.Dijkstra.Logic
             return distances;
         }
 
-        private int GetVertexWithMinWeight(List<Edge> edges, List<int> fullyProcessedVertexes)
+        private Edge GetEdgeWithMinWeight(List<Edge> edges, List<int> fullyProcessedVertexes)
         {
-            return edges.Where(x => !fullyProcessedVertexes.Contains(x.To)).OrderBy(x => x.Weight).First().To;
+            Edge edge = null;
+            var min = int.MaxValue;
+            foreach (var e in edges)
+            {
+                if (e.Weight <= min && !fullyProcessedVertexes.Contains(e.To))
+                {
+                    min = e.Weight;
+                    edge = e;
+                }
+            }
+
+            return edge;
         }
 
         private int[] GetAdjacencyVertexes(int[,] matrix, int vertex)
